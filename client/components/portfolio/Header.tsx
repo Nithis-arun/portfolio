@@ -62,7 +62,7 @@ export default function Header() {
         </nav>
         <div className="flex items-center gap-3">
           <a
-            href="https://cdn.builder.io/o/assets%2F88c6bc0e6f7345cebbea433de530d2ac%2Ff9c43830318a45ea880efaa029d7bbfe?alt=media&token=50a2082a-423b-49b1-a6d4-1ac15f859244&apiKey=88c6bc0e6f7345cebbea433de530d2ac"
+            href="https://drive.google.com/file/d/1_ZA28wkkPNY32cpPnXQTz0YC7xn8gyBE/view?usp=sharing"
             target="_blank"
             rel="noreferrer"
             className="btn-animated hidden md:inline-flex h-9 items-center justify-center rounded-md border px-3 text-sm hover:bg-accent hover:text-accent-foreground"
