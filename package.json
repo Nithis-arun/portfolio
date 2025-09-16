@@ -11,15 +11,18 @@
     ]
   },
   "scripts": {
-     "dev": "vite",
-     "build": "npm run build:client && npm run build:server",
-     "build:client": "vite build",
-     "build:server": "vite build --config vite.config.server.ts",
-     "start": "node dist/server/node-build.mjs",
-     "test": "vitest --run",
-     "format.fix": "prettier --write .",
-     "typecheck": "tsc",
-     "deploy": "gh-pages -d dist/spa"
+    
+   "predeploy": "npm run build",
+    "dev": "vite",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build",
+    "build:server": "vite build --config vite.config.server.ts",
+    "start": "node dist/server/node-build.mjs",
+    "test": "vitest --run",
+    "format.fix": "prettier --write .",
+    "typecheck": "tsc",
+    "deploy": "gh-pages -d dist/spa",
+    "postbuild": "cp dist/spa/index.html dist/spa/404.html"
   },
   "dependencies": {
     "dotenv": "^17.2.1",

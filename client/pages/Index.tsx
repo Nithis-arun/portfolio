@@ -12,7 +12,7 @@ const CV_URL = "https://drive.google.com/file/d/1_ZA28wkkPNY32cpPnXQTz0YC7xn8gyB
 export default function Index() {
   return (
     <div id="top">
-      <Hero />
+      <Hero /> 
       <Main />
     </div>
   );
@@ -62,7 +62,7 @@ function Hero() {
                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
               </a>
               <a
-                href="#contact"
+                href="mailto:arunnithis062@gmail.com"
                 className="btn-animated inline-flex items-center justify-center h-11 rounded-md border px-5 font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
               >
                 Mail Me<Mail className="ml-2 h-6 w-6" />
