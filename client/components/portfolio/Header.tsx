@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Moon, Sun } from "lucide-react";
 import { getStoredTheme, setTheme } from "@/lib/theme";
@@ -47,16 +48,16 @@ export default function Header() {
         </a>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {sections.map((s) => (
-            <a
+            <Link
               key={s.id}
-              href={`#${s.id}`}
+              to={`#${s.id}`}
               className={cn(
                 "relative text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:bg-gradient-to-r after:from-fuchsia-500 after:via-cyan-400 after:to-violet-500",
                 activeId === s.id && "text-foreground after:scale-x-100"
               )}
             >
               {s.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="flex items-center gap-3">
