@@ -348,44 +348,76 @@ function Experience({ title, company, time, bullets }: { title: string; company:
   );
 }
 
-function ProjectCard({ title, tag, desc, bullets }: { title: string; tag: string; desc: string; bullets?: string[] }) {
+function ProjectCard({
+  title,
+  tag,
+  desc,
+  bullets,
+}: {
+  title: string;
+  tag: string;
+  desc: string;
+  bullets?: string[];
+}) {
   const [style, setStyle] = useState<{ transform: string }>({ transform: "" });
+
   const onMove = (e: React.MouseEvent) => {
     const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - 0.5;
     const py = (e.clientY - r.top) / r.height - 0.5;
     const rx = py * -6;
     const ry = px * 8;
-    setStyle({ transform: `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)` });
+    setStyle({
+      transform: `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`,
+    });
   };
+
   const reset = () => setStyle({ transform: "" });
+
   return (
     <article
-      className="group overflow-hidden rounded-2xl border bg-white dark:bg-white/5 shadow-sm transition hover:shadow-lg"
+      className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-sm transition hover:shadow-lg hover:scale-[1.01] h-64" // fixed height
       onMouseMove={onMove}
       onMouseLeave={reset}
       style={style}
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-200 via-white to-purple-200 dark:from-indigo-900 dark:via-slate-900 dark:to-purple-900" />
-        <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{background:"radial-gradient(600px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.15), transparent 40%)"}} />
-      </div>
-      <div className="p-5">
-        <h3 className="font-semibold tracking-tight group-hover:text-foreground">{title}</h3>
+      {/* Background / gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-200 via-white to-purple-200 dark:from-indigo-900 dark:via-slate-900 dark:to-purple-900" />
+
+      {/* Static content */}
+      <div className="relative z-10 p-5">
+        <h3 className="font-semibold tracking-tight group-hover:text-foreground">
+          {title}
+        </h3>
         <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
-        {bullets && bullets.length > 0 && (
-          <ul className="mt-3 list-disc pl-5 text-xs text-muted-foreground space-y-1">
-            {bullets.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
-        )}
+      </div>
+
+      {/* Hover overlay */}
+      <div className="absolute inset-0 z-20 flex items-start justify-start opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+        <div className="h-full w-full rounded-xl border border-white/30 bg-white/30 dark:bg-white/10 backdrop-blur-xl p-5 overflow-auto text-left">
+          <h4 className="font-semibold">More details</h4>
+          {bullets && bullets.length > 0 ? (
+            <ul className="mt-3 list-disc pl-5 text-xs text-foreground/80 space-y-1">
+              {bullets.map((b) => (
+                <li key={b} className="leading-relaxed">
+                  {b}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              Additional details coming soon.
+            </p>
+          )}
+        </div>
       </div>
     </article>
   );
 }
 
-/*const skills = [
+
+
+{/*const skills = [
   "Java",
   "OOP",
   "Spring Boot",
@@ -407,7 +439,7 @@ function ProjectCard({ title, tag, desc, bullets }: { title: string; tag: string
   "MVC Architecture",
   "Figma",
   "VS Code",
-];*/
+];*/}
 
 const projects = [
   {
