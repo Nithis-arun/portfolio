@@ -20,8 +20,6 @@ const App = () => (
       <HashRouter>
         <Routes>
           <Route path="/" element={<Layout><Index /></Layout>} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
       </HashRouter>
     </TooltipProvider>
