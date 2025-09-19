@@ -3,6 +3,10 @@ import Section from "@/components/portfolio/Section";
 import Reveal from "@/components/portfolio/Reveal";
 import Typing from "@/components/portfolio/Typing";
 import { FaSquarePhone } from "react-icons/fa6";
+import { BsPersonWorkspace } from "react-icons/bs";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { MdCastForEducation } from "react-icons/md";
+import { LuMapPinCheck } from "react-icons/lu";
 import { FaGithub } from "react-icons/fa6";
 import { ArrowRight, Download, Mail, Linkedin, Phone, MapPin, Code2, Layout, Server, Database, Wrench, BadgeCheck } from "lucide-react";
 
@@ -52,26 +56,26 @@ function Hero() {
               className="mt-2 block text-2xl sm:text-3xl font-semibold text-foreground"
             />
             <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl">
-               Passionate about building scalable web applications with modern technologies. Expertise in JAVA Full stack development with a focus on user experience and performance optimization.
+               Passionate about building scalable web applications with modern technologies. Expertise in JAVA Full stack development with a focus on user experience and performance optimization.<br></br>I turn complex problems into elegant, user-friendly solutions.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
-              <a
+              {/* <a
                 href="#projects"
                 className="btn-animated inline-flex items-center justify-center h-11 rounded-md bg-primary px-5 text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
               >
                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              </a> */}
               <a
                 href="mailto:arunnithis062@gmail.com"
                 className="btn-animated inline-flex items-center justify-center h-11 rounded-md border px-5 font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                Mail Me<Mail className="ml-2 h-6 w-6" />
+               <Mail className=" h-6 w-6" />
               </a>
               <a
                 href="tel:8124199898"
                 className="btn-animated inline-flex items-center justify-center h-11 rounded-md border px-5 font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                Call Me<FaSquarePhone className="ml-2 h-6 w-6" />
+                <FaSquarePhone className=" h-6 w-6" />
               </a>
               <a
                 href="https://github.com/Nithis-arun"
@@ -79,7 +83,7 @@ function Hero() {
                 rel="noopener noreferrer"
                 className="btn-animated inline-flex items-center justify-center h-11 rounded-md border px-5 font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
-                Github <FaGithub className="ml-2 h-6 w-6" />
+                <FaGithub className=" h-6 w-6" />
               </a>
 
               {/* <a
@@ -99,7 +103,6 @@ function Hero() {
               <div className="relative rounded-3xl border bg-white/70 dark:bg-white/5 backdrop-blur shadow-xl">
                 <div className="aspect-[4/5] overflow-hidden rounded-3xl">
                   <img
-                    src="/placeholder.svg"
                     alt="Portrait of Nithis Arun T"
                     className="h-full w-full object-cover"
                   />
@@ -133,23 +136,23 @@ function Main() {
           </div>
           <div className="md:col-span-2">
             <div className="rounded-2xl rainbow-border p-6 bg-gradient-to-b from-white to-white/60 dark:from-white/5 dark:to-white/5">
-              <h3 className="font-semibold">Contact</h3>
+              <h3 className="font-semibold">Highlight</h3>
               <dl className="mt-4 space-y-3 text-sm">
                 <div className="flex items-center justify-between">
-                  <dt className="text-muted-foreground inline-flex items-center gap-2"><Mail className="h-4 w-4" /> Email</dt>
-                  <dd>arunnithis062@gmail.com</dd>
+                  <dt className="text-muted-foreground inline-flex items-center gap-2"><BsPersonWorkspace className="h-4 w-4" />Experience</dt>
+                  <dd>6 mos</dd>
                 </div>
                 <div className="flex items-center justify-between">
-                  <dt className="text-muted-foreground inline-flex items-center gap-2"><Phone className="h-4 w-4" /> Phone</dt>
-                  <dd>8124199898</dd>
+                  <dt className="text-muted-foreground inline-flex items-center gap-2"><AiOutlineFundProjectionScreen className="h-4 w-4" /> Projects </dt>
+                  <dd>10+</dd>
                 </div>
                 <div className="flex items-center justify-between">
-                  <dt className="text-muted-foreground inline-flex items-center gap-2"><Linkedin className="h-4 w-4" /> LinkedIn</dt>
-                  <dd className="truncate max-w-[12rem]"><a href="https://www.linkedin.com/in/profile-Nithis-Arun-T" target="_blank" rel="noreferrer" className="hover:underline">profile‑Nithis‑Arun‑T</a></dd>
+                  <dt className="text-muted-foreground inline-flex items-center gap-2"><MdCastForEducation className="h-4 w-4" /> Education</dt>
+                  <dd className="truncate max-w-[12rem]">BTech IT</dd>
                 </div>
                 <div className="flex items-center justify-between">
-                  <dt className="text-muted-foreground inline-flex items-center gap-2">GitHub</dt>
-                  <dd className="truncate max-w-[12rem]"><a href="https://github.com/Nithis-arun" target="_blank" rel="noreferrer" className="hover:underline">Nithis‑arun</a></dd>
+                  <dt className="text-muted-foreground inline-flex items-center gap-2"><LuMapPinCheck  className="h-4 w-4" />Location </dt>
+                  <dd className="truncate max-w-[12rem]">Bengaluru</dd>
                 </div>
                 <br></br>
               </dl>
@@ -351,11 +354,13 @@ function Experience({ title, company, time, bullets }: { title: string; company:
 function ProjectCard({
   title,
   tag,
+  skills,
   desc,
   bullets,
 }: {
   title: string;
   tag: string;
+  skills?: string[];
   desc: string;
   bullets?: string[];
 }) {
@@ -376,20 +381,35 @@ function ProjectCard({
 
   return (
     <article
-      className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-sm transition hover:shadow-lg hover:scale-[1.01] h-64" // fixed height
+      className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-sm transition hover:shadow-lg hover:scale-[1.01] h-64"
       onMouseMove={onMove}
       onMouseLeave={reset}
       style={style}
     >
-      {/* Background / gradient */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-200 via-white to-purple-200 dark:from-indigo-900 dark:via-slate-900 dark:to-purple-900" />
 
       {/* Static content */}
-      <div className="relative z-10 p-5">
+      <div className="relative z-10 p-5 flex flex-col h-full">
         <h3 className="font-semibold tracking-tight group-hover:text-foreground">
           {title}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+        <p className="mt-1 text-xs text-muted-foreground">{tag}</p>
+        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{desc}</p>
+
+        {/* Skills Chips */}
+        {skills && skills.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {skills.map((s) => (
+              <span
+                key={s}
+                className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs bg-white/60 dark:bg-white/10"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Hover overlay */}
@@ -450,17 +470,43 @@ const projects = [
   {
     title: "Match Maker — Matrimonial Web App",
     tag: "React (TS) • Spring Boot • MySQL",
+    skills : [
+    "Java",
+    "OOP",
+    "Figma",
+    "Spring Boot",
+    "React.js",
+    "TypeScript",
+    "MySQL",
+    "Git",
+    "GitHub",
+    " Rest API",
+    "Node.js",],
     desc: "JWT authentication, Figma‑designed responsive UI. Deployed with GitHub workflows and Agile process.",
+    
     bullets: [
       "Responsive frontend in React + TypeScript",
       "Spring Boot REST APIs with MySQL",
       "JWT authentication and role-based access",
       "UI/UX designed in Figma",
+      
     ],
   },
   {
     title: "Student Course Management System",
     tag: "Spring Boot • React.js • MongoDB",
+     skills : [
+    "Java",
+    "Figma",
+    "Spring Boot",
+    "React.js",
+    "TypeScript",
+    "Node.js",
+    "Mango DB",
+    " Rest API",
+    "Git",
+    "GitHub",
+  ],
     desc: "REST APIs with JWT auth and a clean, responsive frontend for course and student management.",
     bullets: [
       "Secure Spring Boot API endpoints",
@@ -471,6 +517,18 @@ const projects = [
   {
     title: "IPO Insight Platform",
     tag: "Spring Boot • React • PostgreSQL",
+     skills : [
+    "Java",
+    "Figma",
+    "Spring Boot",
+    "React.js",
+    "TypeScript",
+    "Node.js",
+    "Git",
+    "GitHub",
+    "PostgreSQL",
+    " Rest API",
+  ],
     desc: "Secure APIs and data visualization with CI/CD and PDF downloads for reports.",
     bullets: [
       "Downloadable PDF documents",
@@ -481,6 +539,18 @@ const projects = [
   {
     title: "Smart Fruit Basket (AI + IoT)",
     tag: "ML • Firebase • Flutter",
+     skills : [
+      "Figma",
+      "Flutter",
+      "ML",
+      "Python",
+      "IOT",
+      "Firebase",
+      "Git",
+      "GitHub",
+      "API",
+      "raspberry pi",
+    ],
     desc: "Model detects fresh/rotten fruits, stock alerts, BigBasket auto‑reorder, and chatbot integration.",
     bullets: [
       "Flutter (iOS & Android) mobile app",
