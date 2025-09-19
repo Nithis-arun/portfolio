@@ -20,6 +20,7 @@ const App = () => (
       <HashRouter>
         <Routes>
           <Route path="/" element={<Layout><Index /></Layout>} />
+          
         </Routes>
       </HashRouter>
     </TooltipProvider>
