@@ -18,6 +18,20 @@ export default function Header() {
   const [theme, setThemeState] = useState<'light'|'dark'>(getStoredTheme() ?? (typeof document!== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light'));
   const activeId = useScrollSpy(sections.map(s => s.id), 96);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 96;
+      const elementPosition = element.offsetTop;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
@@ -39,24 +53,24 @@ export default function Header() {
       )}
     >
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <a href="#top" className="group inline-flex items-center gap-2">
+        <button onClick={() => scrollToSection('top')} className="group inline-flex items-center gap-2">
           <div className="h-8 w-8 rounded-md bg-primary/15 text-primary grid place-items-center font-bold">
             <span>NT</span>
           </div>
           <span className="font-semibold tracking-tight">Nithis Arun T</span>
-        </a>
+        </button>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {sections.map((s) => (
-            <a
+            <button
               key={s.id}
-              href={`#${s.id}`}
+              onClick={() => scrollToSection(s.id)}
               className={cn(
                 "relative text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:bg-gradient-to-r after:from-fuchsia-500 after:via-cyan-400 after:to-violet-500",
                 activeId === s.id && "text-foreground after:scale-x-100"
               )}
             >
               {s.label}
-            </a>
+            </button>
           ))}
         </nav>
         <div className="flex items-center gap-3">
@@ -75,12 +89,12 @@ export default function Header() {
           >
             {theme === 'dark' ? <Sun className="h-4 w-4"/> : <Moon className="h-4 w-4"/>}
           </button>
-          <a
-            href="#contact"
+          <button
+            onClick={() => scrollToSection('contact')}
             className="btn-animated hidden sm:inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           >
             Get in touch
-          </a>
+          </button>
         </div>
       </div>
     </header>
