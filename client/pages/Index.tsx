@@ -463,10 +463,52 @@ function ProjectCard({
 
 const projects = [
   {
-    title: "Mannoviyam",
-    tag: "",
-    desc: "A mental wellness platform with mindful journaling, habit tracking, and curated resources to improve emotional health.",
+    title: "Arun Financial Consulting – Business Website",
+    tag: "React.js • HTML • CSS • JavaScript • Vercel",
+    skills: [
+      "React.js",
+      "CSS",
+      "JavaScript",
+      "Vercel",
+      "Node.js",
+      "Next.js",
+      "MangoDB",
+      "Responsive Design",
+      "SEO",
+    ],
+    desc: "Responsive business website for a financial consulting firm with modern design and fast performance.",
+    bullets: [
+      "Responsive design optimized for all devices",
+      "Modern and clean UI with professional styling",
+      "Contact form integration",
+      "Fast loading performance",
+      "SEO-friendly structure",
+      "Deployed on Vercel",
+    ],
   },
+  {
+  title: "Mannoviyam",
+  tag: "TypeScript • Node.js • MongoDB",
+  skills: [
+    "TypeScript",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "REST API",
+    "JWT Authentication",
+    "Git",
+    "GitHub",
+  ],
+  desc: "A mental wellness platform with mindful journaling, habit tracking, and curated resources to improve emotional health.",
+  bullets: [
+    "Built backend services using Node.js and Express",
+    "Type-safe development using TypeScript",
+    "MongoDB database design and CRUD operations",
+    "RESTful APIs for journaling and habit modules",
+    "Authentication using JWT",
+  ],
+},
+
   {
     title: "Match Maker — Matrimonial Web App",
     tag: "React (TS) • Spring Boot • MySQL",
