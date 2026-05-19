@@ -15,6 +15,15 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: "dist/spa",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom", "react-router-dom"],
+          "vendor-motion": ["framer-motion"],
+          "vendor-gsap": ["gsap"],
+        },
+      },
+    },
   },
   base: mode === 'development' ? '/' : '/portfolio/',
   plugins: [react(), expressPlugin()],
