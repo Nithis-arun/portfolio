@@ -9,12 +9,15 @@ import {
   HERO_PHRASES 
 } from "../../client/lib/constants";
 
-// We will initialize the AI instance inside the handler or safely outside.
 let ai: GoogleGenAI | null = null;
-try {
-  ai = new GoogleGenAI({});
-} catch (error) {
-  console.warn("Could not initialize GoogleGenAI. Is GEMINI_API_KEY set?");
+if (process.env.GEMINI_API_KEY) {
+  try {
+    ai = new GoogleGenAI({});
+  } catch (error) {
+    console.warn("Could not initialize GoogleGenAI:", error);
+  }
+} else {
+  console.warn("Could not initialize GoogleGenAI. GEMINI_API_KEY is not set.");
 }
 
 export const handleChat: RequestHandler = async (req, res) => {

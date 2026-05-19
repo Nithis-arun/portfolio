@@ -49,16 +49,20 @@ export default function Chatbot() {
       });
 
       if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        if (errorData) {
+          throw new Error(errorData.reply || errorData.details || errorData.error || "Failed to get response");
+        }
         throw new Error("Failed to get response");
       }
 
       const data = await response.json();
       setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Chat Error:", error);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Sorry, I am currently experiencing a system glitch. Please try again later." },
+        { role: "assistant", content: error.message || "Sorry, I am currently experiencing a system glitch. Please try again later." },
       ]);
     } finally {
       setIsLoading(false);
