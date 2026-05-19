@@ -7,7 +7,7 @@ import {
   CONTACT_INFO, 
   HIGHLIGHTS, 
   HERO_PHRASES 
-} from "@/lib/constants";
+} from "../../client/lib/constants";
 
 // We will initialize the AI instance inside the handler or safely outside.
 let ai: GoogleGenAI | null = null;
